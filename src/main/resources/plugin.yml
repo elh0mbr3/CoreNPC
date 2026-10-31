@@ -1,0 +1,14 @@
+name: CoreNPC
+description: $description
+prefix: CoreNPC
+version: '0.1'
+depend: [ProtocolLib]
+main: org.elh0mbr3.coreNPC.CoreNPC
+api-version: '26.3'
+load: POSTWORLD
+authors: [elh0mbr3]
+
+commands:
+  npc:
+    description: Main command for CoreNPC
+    usage: /npc <spawn>
