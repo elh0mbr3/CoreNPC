@@ -1,7 +1,7 @@
 name: CoreNPC
 description: $description
 prefix: CoreNPC
-version: '0.1'
+version: '$version'
 depend: [ProtocolLib]
 main: org.elh0mbr3.coreNPC.CoreNPC
 api-version: '26.3'

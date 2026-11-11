@@ -22,6 +22,6 @@ for this project.
 - Gradle uses a daemon and incremental compilation, making the build process significantly faster when testing minor code changes.
 
 ## Requirements:
-- **Server:** PaperMC 1.20.6 (or higher)
+- **Server:** PaperMC 26.3 (or higher)
 - **Dependencies:** ProtocolLib 5.3.0
-- **Java:** Java 21+
+- **Java:** Java 25
