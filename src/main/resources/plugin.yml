@@ -2,7 +2,7 @@ name: CoreNPC
 description: $description
 prefix: CoreNPC
 version: '$version'
-depend: [ProtocolLib]
+depend: [packetevents]
 main: org.elh0mbr3.coreNPC.CoreNPC
 api-version: '26.3'
 load: POSTWORLD

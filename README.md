@@ -23,5 +23,5 @@ for this project.
 
 ## Requirements:
 - **Server:** PaperMC 26.3 (or higher)
-- **Dependencies:** ProtocolLib 5.3.0
+- **Dependencies:** PacketEvents 2.14.0
 - **Java:** Java 25
