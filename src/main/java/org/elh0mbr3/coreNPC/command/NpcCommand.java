@@ -29,10 +29,11 @@ public class NpcCommand implements CommandExecutor {
             // Creates the NPC blueprint at the player's exact location
             Npc npc = new Npc("TestNPC", player.getLocation());
 
-            // Save it to our manager
+            // Saves it and shows it to the player who ran the command
             plugin.getNpcManager().addNpc(npc);
+            plugin.getNpcRenderer().show(npc, player);
 
-            player.sendMessage("NPC created in memory with ID: " + npc.getEntityId());
+            player.sendMessage("NPC created with ID: " + npc.getEntityId());
             return true;
         }
 
