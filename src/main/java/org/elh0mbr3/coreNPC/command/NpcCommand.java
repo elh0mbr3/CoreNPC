@@ -1,5 +1,6 @@
 package org.elh0mbr3.coreNPC.command;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,9 +30,13 @@ public class NpcCommand implements CommandExecutor {
             // Creates the NPC blueprint at the player's exact location
             Npc npc = new Npc("TestNPC", player.getLocation());
 
-            // Saves it and shows it to the player who ran the command
+            // Saves it and shows it to the players
             plugin.getNpcManager().addNpc(npc);
-            plugin.getNpcRenderer().show(npc, player);
+            for (Player online : Bukkit.getOnlinePlayers()) {
+                if (online.getWorld().equals(npc.getLocation().getWorld())) {
+                    plugin.getNpcRenderer().show(npc, online);
+                }
+            }
 
             player.sendMessage("NPC created with ID: " + npc.getEntityId());
             return true;

@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.elh0mbr3.coreNPC.command.NpcCommand;
 import org.elh0mbr3.coreNPC.core.NpcManager;
 import org.elh0mbr3.coreNPC.core.NpcRenderer;
+import org.elh0mbr3.coreNPC.listener.PlayerJoinListener;
 
 public final class CoreNPC extends JavaPlugin {
 
@@ -23,6 +24,7 @@ public final class CoreNPC extends JavaPlugin {
         this.npcRenderer = new NpcRenderer(packetEvents);
 
         getCommand("npc").setExecutor(new NpcCommand(this));
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         getLogger().info("CoreNPC has successfully started.");
     }
 
