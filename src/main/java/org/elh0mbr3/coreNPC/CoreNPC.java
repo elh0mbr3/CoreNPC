@@ -7,6 +7,7 @@ import org.elh0mbr3.coreNPC.command.NpcCommand;
 import org.elh0mbr3.coreNPC.core.NpcManager;
 import org.elh0mbr3.coreNPC.core.NpcRenderer;
 import org.elh0mbr3.coreNPC.listener.PlayerJoinListener;
+import org.elh0mbr3.coreNPC.storage.NpcStorage;
 
 public final class CoreNPC extends JavaPlugin {
 
@@ -14,6 +15,7 @@ public final class CoreNPC extends JavaPlugin {
     private PacketEventsAPI<?> packetEvents;
     private NpcManager npcManager;
     private NpcRenderer npcRenderer;
+    private NpcStorage npcStorage;
 
     @Override
     public void onEnable() {
@@ -21,8 +23,10 @@ public final class CoreNPC extends JavaPlugin {
         // Hooks into PacketEvents
         this.packetEvents = PacketEvents.getAPI();
         this.npcManager = new NpcManager();
+        this.npcStorage = new NpcStorage(this);
         this.npcRenderer = new NpcRenderer(packetEvents);
 
+        npcStorage.load(npcManager);
         getCommand("npc").setExecutor(new NpcCommand(this));
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         getLogger().info("CoreNPC has successfully started.");
@@ -44,5 +48,9 @@ public final class CoreNPC extends JavaPlugin {
 
     public NpcManager getNpcManager() {
         return npcManager;
+    }
+
+    public NpcStorage getNpcStorage() {
+        return npcStorage;
     }
 }

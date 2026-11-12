@@ -32,6 +32,8 @@ public class NpcCommand implements CommandExecutor {
 
             // Saves it and shows it to the players
             plugin.getNpcManager().addNpc(npc);
+            plugin.getNpcStorage().save(plugin.getNpcManager().getAll());
+
             for (Player online : Bukkit.getOnlinePlayers()) {
                 if (online.getWorld().equals(npc.getLocation().getWorld())) {
                     plugin.getNpcRenderer().show(npc, online);
@@ -64,6 +66,7 @@ public class NpcCommand implements CommandExecutor {
                 plugin.getNpcRenderer().hide(npc, online);
             }
             plugin.getNpcManager().removeNpc(id);
+            plugin.getNpcStorage().save(plugin.getNpcManager().getAll());
 
             player.sendMessage("NPC " + id + " removed.");
             return true;
