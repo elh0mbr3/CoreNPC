@@ -3,9 +3,7 @@ package org.elh0mbr3.coreNPC.core;
 import com.github.retrooper.packetevents.PacketEventsAPI;
 import com.github.retrooper.packetevents.protocol.entity.type.EntityTypes;
 import com.github.retrooper.packetevents.protocol.player.UserProfile;
-import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityHeadLook;
-import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerPlayerInfoUpdate;
-import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSpawnEntity;
+import com.github.retrooper.packetevents.wrapper.play.server.*;
 import io.github.retrooper.packetevents.util.SpigotConversionUtil;
 import org.bukkit.entity.Player;
 import org.elh0mbr3.coreNPC.model.Npc;
@@ -36,5 +34,14 @@ public class NpcRenderer {
         packetEvents.getPlayerManager().sendPacket(viewer, info);
         packetEvents.getPlayerManager().sendPacket(viewer, spawn);
         packetEvents.getPlayerManager().sendPacket(viewer, head);
+    }
+
+    // Sends the packets that make one NPC disappear for one player
+    public void hide(Npc npc, Player viewer) {
+        WrapperPlayServerDestroyEntities destroy = new WrapperPlayServerDestroyEntities(npc.getEntityId());
+        WrapperPlayServerPlayerInfoRemove info = new WrapperPlayServerPlayerInfoRemove(npc.getUuid());
+        packetEvents.getPlayerManager().sendPacket(viewer, destroy);
+        packetEvents.getPlayerManager().sendPacket(viewer, info);
+
     }
 }

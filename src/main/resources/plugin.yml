@@ -11,4 +11,4 @@ authors: [elh0mbr3]
 commands:
   npc:
     description: Main command for CoreNPC
-    usage: /npc <spawn>
+    usage: /npc <spawn|remove>
